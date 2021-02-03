@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int findSpecialInteger(vector<int>& arr) {
+        int flag=0;
+        int arrsize=arr.size();
+        unordered_map<int,int> umap;
+        for(auto x:arr)
+            umap[x]++;
+        for(auto i:umap){
+            if(i.second>(arrsize/4))
+                return i.first;
+        }
+        return -1;
+    }
+};
