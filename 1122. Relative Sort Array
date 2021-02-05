@@ -1,0 +1,33 @@
+class Solution {
+public:
+    vector<int> relativeSortArray(vector<int>& arr1, vector<int>& arr2) {
+        map<int, int> numCount;
+        vector<int> res;
+        
+        for (auto num : arr1)
+        {
+            numCount[num]++;
+        }
+        
+        for (auto num : arr2)
+        {
+            int count = numCount[num];
+            for (int i = 0; i < count; i++)
+            {
+                res.push_back(num);
+                numCount.erase(num);
+            }
+        }
+        
+        for (auto nc : numCount)
+        {
+            int count = nc.second;
+            for (int j = 0; j < count; j++)
+            {
+                res.push_back(nc.first);
+            }
+        }
+        
+        return res;
+    }
+};
